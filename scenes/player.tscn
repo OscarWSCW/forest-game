@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://dp04kmgrbj832"]
+[gd_scene load_steps=33 format=3 uid="uid://dp04kmgrbj832"]
 
 [ext_resource type="Script" path="res://scenes/scripts/player.gd" id="1_0j566"]
 [ext_resource type="Texture2D" uid="uid://bt6eyc8gaionl" path="res://assets/Knight Hero Platfomer/Attack 1.png" id="1_wl1b7"]
 [ext_resource type="Texture2D" uid="uid://bjyeodx07ao65" path="res://assets/Knight Hero Platfomer/Combat Ready Idle.png" id="2_inl86"]
 [ext_resource type="Texture2D" uid="uid://r11shswp62bo" path="res://assets/Knight Hero Platfomer/Walk.png" id="3_j8gcw"]
+[ext_resource type="Texture2D" uid="uid://c2wsyq23e0e" path="res://assets/Knight Hero Platfomer/Jump.png" id="4_7xb82"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b51we"]
 atlas = ExtResource("1_wl1b7")
@@ -64,6 +65,22 @@ region = Rect2(66, 0, 22, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ndq5b"]
 atlas = ExtResource("2_inl86")
 region = Rect2(88, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6egds"]
+atlas = ExtResource("4_7xb82")
+region = Rect2(0, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax52k"]
+atlas = ExtResource("4_7xb82")
+region = Rect2(22, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vt2o"]
+atlas = ExtResource("4_7xb82")
+region = Rect2(44, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86jry"]
+atlas = ExtResource("4_7xb82")
+region = Rect2(66, 0, 22, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_86xgw"]
 atlas = ExtResource("3_j8gcw")
@@ -144,7 +161,24 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6egds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax52k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vt2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86jry")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -167,21 +201,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e02wj"]
-radius = 7.12397
+radius = 2.33071
 
 [node name="player" type="CharacterBody2D"]
 scale = Vector2(1.76, 1.93559)
 script = ExtResource("1_0j566")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3.97727, 3.61647)
+scale = Vector2(0.464876, 0.344426)
 sprite_frames = SubResource("SpriteFrames_yqx6s")
-animation = &"idle"
+animation = &"jump"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 4)
+position = Vector2(-5.11364, 4.64974)
 shape = SubResource("CircleShape2D_e02wj")
