@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 400.0
 const JUMP_VELOCITY = -400.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -30,17 +30,13 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 
 		# Play animations 
+	if is_on_floor():
 		if direction == 0:
 			animated_sprite.play("idle")
 		else:
 			animated_sprite.play("walk")
 	else:
 		animated_sprite.play("jump")
-
-
-
- 
-	
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
